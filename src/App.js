@@ -1,24 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import "bootstrap/dist/css/bootstrap.min.css";
 
+import GlobalEx from "./utils/global_export";
+import { NotFoundComponent, BasicLayout } from "./components";
+import {
+  HomePages,
+  ProductDetailsPage,
+  CartPage,
+  CheckoutPage,
+  ConfirmationOrderPage,
+  OrderTrackingPage,
+  CategoryPage,
+} from "./pages";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GlobalEx.Suspense fallback={<div>Loading...</div>}>
+      <GlobalEx.Routes>
+        <GlobalEx.Route path="/" element={<BasicLayout />}>
+          <GlobalEx.Route path="/" element={<HomePages />} />
+
+          <GlobalEx.Route
+            path="/products/details/:id"
+            element={<ProductDetailsPage />}
+          />
+
+          <GlobalEx.Route path="/cart" element={<CartPage />} />
+          <GlobalEx.Route path="/checkout" element={<CheckoutPage />} />
+          <GlobalEx.Route
+            path="/confirmation/:order_id"
+            element={<ConfirmationOrderPage />}
+          />
+
+          <GlobalEx.Route
+            path="/order-tracking/:order_id"
+            element={<OrderTrackingPage />}
+          />
+
+          <GlobalEx.Route path="/category/:slug" element={<CategoryPage />} />
+
+          <GlobalEx.Route path="*" element={<NotFoundComponent />} />
+        </GlobalEx.Route>
+      </GlobalEx.Routes>
+    </GlobalEx.Suspense>
   );
 }
 
