@@ -12,7 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 function MainHeader() {
   const dispatch = useDispatch();
-  const { search_name } = useSelector((state) => state.home_slice);
+  const { search_name, carts } = useSelector((state) => state.home_slice);
 
   const text = "Personalized Anniversary Keepsake"; // Text to animate
   const speed = 100;
@@ -47,6 +47,8 @@ function MainHeader() {
     dispatch(retrieveBestSelling("best selling"));
     dispatch(retrieveTrending("trending"));
   }
+
+  console.log("carts", carts);
 
   return (
     <div className="bg-[#C5ECFB] py-3">
@@ -94,7 +96,7 @@ function MainHeader() {
                 >
                   <ShoppingCartIcon />
                   <span className="absolute right-0 top-0 font-bold text-sm text-red-500">
-                    0
+                    {carts?.length}
                   </span>
                 </NavLink>
               </li>

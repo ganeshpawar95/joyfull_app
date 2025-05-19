@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
   retrieveProductDetails,
-  AddProductCarts,
   CreateProductDetails,
 } from "../../store/slices/homeSlices";
 import { useNavigate, useParams } from "react-router-dom";
@@ -30,11 +29,6 @@ function useProductDetailsHook() {
   useEffect(() => {
     dispatch(retrieveProductDetails(router.id));
   }, [dispatch]);
-
-  useEffect(() => {
-    const carts_data = getCartFromLocalStorage("carts");
-    dispatch(AddProductCarts(carts_data));
-  }, []);
 
   const isMobile = useMediaQuery({
     query: "(max-width: 767px)",

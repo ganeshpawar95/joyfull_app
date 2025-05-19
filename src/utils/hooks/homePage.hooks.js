@@ -6,13 +6,13 @@ import {
   retrieveBestSelling,
   retrieveTrending,
   retrieveReviewsAll,
-  AddProductCarts,
+  retrieveCartDetails,
 } from "../../store/slices/homeSlices";
 import { getCartFromLocalStorage, getOrCreateSessionId } from "../helpers";
 
 const useHomePageHook = () => {
   const dispatch = useDispatch();
-  const { banner_list, best_selling, trending, reviews_all, carts } =
+  const { banner_list, best_selling, trending, reviews_all, carts, loading1 } =
     useSelector((state) => state.home_slice);
 
   useEffect(() => {
@@ -21,10 +21,14 @@ const useHomePageHook = () => {
     dispatch(retrieveBestSelling("best selling"));
     dispatch(retrieveTrending("trending"));
     dispatch(retrieveReviewsAll());
-
-    const carts_data = getCartFromLocalStorage("carts");
-    dispatch(AddProductCarts(carts_data));
   }, [dispatch]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      dispatch(retrieveCartDetails(localStorage.getItem("session_id")));
+    }, 5000); // 20 seconds = 20000 milliseconds
+    return () => clearTimeout(timer); // clean up if component unmounts
+  }, []);
 
   return {
     banner_list,
@@ -32,6 +36,7 @@ const useHomePageHook = () => {
     trending,
     reviews_all,
     dispatch,
+    loading1,
   };
 };
 

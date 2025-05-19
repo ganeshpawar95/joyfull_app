@@ -4,6 +4,8 @@ import { saveCartToLocalStorage } from "../../utils/helpers";
 
 const initialState = {
   loading: true,
+  loading1: false,
+
   hasErrors: true,
   banner_list: [],
   best_selling: [],
@@ -77,7 +79,7 @@ export const CreateProductDetails = createAsyncThunk(
 );
 
 export const retrieveCartDetails = createAsyncThunk(
-  "cart-retrieve-list-details",
+  "cart-item-list",
   async (session_id) => {
     const res = await HttpRequests.get(
       `home/product/cart_details/${session_id}`
@@ -250,32 +252,32 @@ const HomeSlice = createSlice({
 
     // retrieveBestSelling
     builder.addCase(retrieveBestSelling.pending, (state, action) => {
-      state.loading = true;
+      state.loading1 = true;
       state.best_selling = [];
     });
 
     builder.addCase(retrieveBestSelling.fulfilled, (state, action) => {
-      state.loading = false;
+      state.loading1 = false;
       state.best_selling = action.payload;
     });
 
     builder.addCase(retrieveBestSelling.rejected, (state, action) => {
-      state.loading = false;
+      state.loading1 = false;
       state.best_selling = [];
     });
     // retrieveTrending
     builder.addCase(retrieveTrending.pending, (state, action) => {
-      state.loading = true;
+      state.loading1 = true;
       state.trending = [];
     });
 
     builder.addCase(retrieveTrending.fulfilled, (state, action) => {
-      state.loading = false;
+      state.loading1 = false;
       state.trending = action.payload;
     });
 
     builder.addCase(retrieveTrending.rejected, (state, action) => {
-      state.loading = false;
+      state.loading1 = false;
       state.trending = [];
     });
 
@@ -339,22 +341,12 @@ const HomeSlice = createSlice({
     update_loader: (state, action) => {
       state.loading = action.payload;
     },
-
-    AddProductCarts: (state, action) => {
-      state.carts = action.payload;
-      saveCartToLocalStorage(action.payload);
-    },
   },
 });
 
 // change_page
 
 const { reducer } = HomeSlice;
-export const {
-  update_loader,
-  change_page,
-  onchange_sort_by,
-  onchange_search,
-  AddProductCarts,
-} = HomeSlice.actions;
+export const { update_loader, change_page, onchange_sort_by, onchange_search } =
+  HomeSlice.actions;
 export default reducer;

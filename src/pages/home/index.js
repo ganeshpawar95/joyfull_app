@@ -1,3 +1,4 @@
+import { Spin } from "antd";
 import CustomerReviews from "../../components/custom/CustomerReviews/CustomerReviews";
 import HeroSlider from "../../components/custom/HeroSlider/HeroSlider";
 import ProductGrid from "../../components/custom/ProductGrid/ProductGrid";
@@ -5,10 +6,10 @@ import ProductListing from "../../components/custom/ProductListing/ProductListin
 import WorkProcess from "../../components/custom/WorkProcess/WorkProcess";
 import { useHomePageHook } from "../../utils/hooks/index";
 function Home() {
-  const { banner_list, best_selling, trending, reviews_all } =
+  const { banner_list, best_selling, trending, reviews_all, loading1 } =
     useHomePageHook();
   return (
-    <>
+    <Spin spinning={loading1}>
       <HeroSlider banner_list={banner_list} />
       <ProductGrid />
       <div className="px-2 sm:px-10">
@@ -25,7 +26,7 @@ function Home() {
       <div className="px-4 sm:px-10 mt-10 pb-10">
         <WorkProcess />
       </div>
-    </>
+    </Spin>
   );
 }
 
