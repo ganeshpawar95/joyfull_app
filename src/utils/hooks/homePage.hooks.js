@@ -1,6 +1,4 @@
 // src/utils/hooks/homePage.hooks.js
-"use client";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import {

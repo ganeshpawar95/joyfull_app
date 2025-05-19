@@ -1,5 +1,3 @@
-"use client";
-
 import SingleProductCard from "./SingleProductCard";
 import { Button } from "../../ui/button";
 import { useState } from "react";
@@ -10,8 +8,6 @@ function ProductListing(props) {
   const [is_show_more, set_is_show_more] = useState(false);
   // Show only 4 products when is_show_more is false
   const displayedProducts = is_show_more ? results : results?.slice(0, 4);
-
-  console.log("displayedProducts", displayedProducts);
   return (
     <div>
       <div className="text-center">

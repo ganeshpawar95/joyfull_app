@@ -71,7 +71,7 @@ function Notifications(
   });
 }
 
-function transformCertificateData(input, callback) {
+function transformCertificateData(input, product_details, callback) {
   const result = {
     certificate_color: input.certificate_color,
     frame_color: input.frame_color,
@@ -91,14 +91,27 @@ function transformCertificateData(input, callback) {
   );
 
   const promises = entries.map(async ([key, value]) => {
-    if (key === "Upload photo" && Array.isArray(value) && value.length > 0) {
-      const file = value[0].originFileObj;
-      const base64 = await getBase64(file);
-
-      return {
-        name: key,
-        data: base64,
-      };
+    var product_tag = product_details?.product_tag_options?.filter(
+      (master) => master.name == key
+    );
+    if (product_tag.length != 0) {
+      if (
+        ["File Upload", "Upload photo"].includes(product_tag[0].tag) &&
+        Array.isArray(value) &&
+        value.length > 0
+      ) {
+        const file = value[0].originFileObj;
+        const base64 = await getBase64(file);
+        return {
+          name: key,
+          data: base64,
+        };
+      } else {
+        return Promise.resolve({
+          name: key,
+          data: value,
+        });
+      }
     } else {
       return Promise.resolve({
         name: key,
@@ -222,11 +235,20 @@ function getShipping(cartItems) {
 function formatSlug(slug) {
   if (slug != undefined) {
     return slug
-      .split("_") // Split by underscores
-      .map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
-      .join(" ");
+      ?.split("_") // Split by underscores
+      ?.map((word) => word.charAt(0).toUpperCase() + word.slice(1)) // Capitalize each word
+      ?.join(" ");
   }
   return ""; // Join with spaces
+}
+
+function get_is_prod_env() {
+  const IS_DEBUG = process.env.NODE_ENV;
+  console.log("IS_DEBUG1", IS_DEBUG);
+  if (IS_DEBUG == "production") {
+    return true;
+  }
+  return false;
 }
 
 export {
@@ -243,4 +265,5 @@ export {
   getTotalAmount,
   getShipping,
   formatSlug,
+  get_is_prod_env,
 };

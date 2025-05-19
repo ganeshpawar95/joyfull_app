@@ -1,7 +1,7 @@
 import WorkProcess from "../../components/custom/WorkProcess/WorkProcess";
 import { useOrderConfirmationsPageHook } from "../../utils/hooks";
 
-export default async function ConfirmationOrderPage() {
+export default function ConfirmationOrderPage() {
   const { order_id } = useOrderConfirmationsPageHook();
   return (
     <>

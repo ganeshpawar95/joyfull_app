@@ -1,4 +1,3 @@
-// "use client";
 import DetailsSlider from "../../../../components/custom/DetailsPreview/DetailsSlider";
 import ProductListing from "../../../../components/custom/ProductListing/ProductListing";
 import WorkProcess from "../../../../components/custom/WorkProcess/WorkProcess";
@@ -9,11 +8,11 @@ import Col from "react-bootstrap/esm/Col";
 import { ShoppingBag, ShoppingCart } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 
-import { Tabs, Form } from "antd";
+import { Tabs, Form, Spin } from "antd";
 import { useProductDetailsHook } from "../../../../utils/hooks/index";
 import DOMPurify from "dompurify";
 
-export default async function ProductDetailsPage(props) {
+export default function ProductDetailsPage(props) {
   const {
     product_details,
     add_to_cart,
@@ -21,6 +20,8 @@ export default async function ProductDetailsPage(props) {
     isExpanded,
     setIsExpanded,
     isMobile,
+    setisCart,
+    loading,
   } = useProductDetailsHook();
 
   const items = [
@@ -89,7 +90,7 @@ export default async function ProductDetailsPage(props) {
     add_to_cart({ ...product_details, user_data: values });
   }
   return (
-    <>
+    <Spin spinning={loading}>
       <div className="py-14 bg-[url(https://plus.unsplash.com/premium_photo-1672883552384-087b8a7acdb6?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)] bg-cover bg-center bg-no-repeat relative z-10">
         <div className="absolute inset-0 bg-black opacity-15 -z-10"></div>
         <div className="row">
@@ -101,7 +102,7 @@ export default async function ProductDetailsPage(props) {
         </div>
       </div>
       {product_details != null && (
-        <Form onFinish={handleSubmit} form={form}>
+        <Form form={form} onFinish={handleSubmit}>
           <div className="px-3 sm:px-10 mt-10 pb-10">
             <Row>
               <Col xl={6}>
@@ -116,13 +117,22 @@ export default async function ProductDetailsPage(props) {
                 <div className="mt-5 fixed bottom-0 left-0 w-full z-40 px-2 pb-2 sm:px-0 sm:relative sm:left-0 ">
                   <div className="grid grid-cols-2 gap-2 sm:gap-4">
                     <div>
-                      <Button type="submit" className="w-full sm:rounded-md">
+                      <Button
+                        onClick={() => {
+                          setisCart("cart");
+                        }}
+                        type="submit"
+                        className="w-full sm:rounded-md"
+                      >
                         <ShoppingCart />
                         Add to Cart
                       </Button>
                     </div>
                     <div>
                       <Button
+                        onClick={() => {
+                          setisCart("buy");
+                        }}
                         type="submit"
                         variant="orange"
                         className="w-full sm:rounded-md"
@@ -154,6 +164,6 @@ export default async function ProductDetailsPage(props) {
           </div>
         </Form>
       )}
-    </>
+    </Spin>
   );
 }

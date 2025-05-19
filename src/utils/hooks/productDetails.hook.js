@@ -1,6 +1,3 @@
-// src/utils/hooks/homePage.hooks.js
-"use client";
-
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import {
@@ -8,7 +5,6 @@ import {
   AddProductCarts,
   CreateProductDetails,
 } from "../../store/slices/homeSlices";
-// import { useParams, useRouter } from "next/navigation";
 import { useNavigate, useParams } from "react-router-dom";
 import { Form } from "antd";
 import { ToastContainer, toast } from "react-toastify";
@@ -20,11 +16,15 @@ import {
 import { useMediaQuery } from "react-responsive";
 
 function useProductDetailsHook() {
+  const [isCart, setisCart] = useState("cart"); // "cart" or "buy"
+
   const router_nav = useNavigate();
   const dispatch = useDispatch();
   const router = useParams();
   const [form] = Form.useForm();
-  const { product_details, carts } = useSelector((state) => state.home_slice);
+  const { product_details, carts, loading } = useSelector(
+    (state) => state.home_slice
+  );
   const [isExpanded, setIsExpanded] = useState(false);
 
   useEffect(() => {
@@ -42,8 +42,7 @@ function useProductDetailsHook() {
 
   function add_to_cart(product) {
     const session_id = getOrCreateSessionId();
-    transformCertificateData(product.user_data, (output) => {
-      console.log("Final Output:", output);
+    transformCertificateData(product.user_data, product_details, (output) => {
       dispatch(
         CreateProductDetails({
           ...output,
@@ -54,18 +53,21 @@ function useProductDetailsHook() {
         .unwrap()
         .then((res) => {
           form.resetFields();
-          toast.success("Product added successfully in cart", {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: false,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-
-          router_nav("/cart");
+          if (isCart == "cart") {
+            toast.success("Product added successfully in cart", {
+              position: "top-right",
+              autoClose: 5000,
+              hideProgressBar: false,
+              closeOnClick: false,
+              pauseOnHover: true,
+              draggable: true,
+              progress: undefined,
+              theme: "light",
+            });
+            router_nav("/cart");
+          } else {
+            router_nav("/checkout");
+          }
         })
         .catch((e) => {
           toast.error(e, {
@@ -89,6 +91,8 @@ function useProductDetailsHook() {
     isExpanded,
     setIsExpanded,
     isMobile,
+    setisCart,
+    loading,
   };
 }
 

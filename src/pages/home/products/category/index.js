@@ -4,7 +4,7 @@ import WorkProcess from "../../../../components/custom/WorkProcess/WorkProcess";
 
 import { useCategoryHook } from "../../../../utils/hooks";
 import { formatSlug } from "../../../../utils/helpers";
-export default async function CategoryPage(props) {
+export default function CategoryPage(props) {
   const { loading, category_product, slug } = useCategoryHook();
 
   return (

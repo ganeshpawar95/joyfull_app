@@ -5,11 +5,18 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "./store/store";
 import { BrowserRouter as Router } from "react-router-dom";
+import { get_is_prod_env } from "./utils/helpers";
+import { ToastContainer, toast } from "react-toastify";
+
+get_is_prod_env()
+  ? require("./assets/main.css")
+  : require("./assets/tailwind.css");
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
     <Router basename={"/"}>
+      <ToastContainer />
       <App />
     </Router>
   </Provider>
