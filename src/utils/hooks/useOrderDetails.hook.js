@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { GetOrderDetails } from "../../store/slices/homeSlices";
+import { GetOrderDetails, update_loader } from "../../store/slices/homeSlices";
 import { useNavigate, useParams } from "react-router-dom";
 
 function useOrderDetailsHook() {
@@ -13,10 +13,15 @@ function useOrderDetailsHook() {
     dispatch(GetOrderDetails(order_id));
   }, [order_id]);
 
+  function update_loader_state(value) {
+    dispatch(update_loader(value));
+  }
+
   return {
     order_details,
     loading,
     router_nav,
+    update_loader_state,
   };
 }
 

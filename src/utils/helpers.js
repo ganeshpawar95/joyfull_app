@@ -164,6 +164,7 @@ function getOrCreateSessionId() {
 
 function get_india_state() {
   return [
+    { label: "Telangana", value: "Telangana" },
     { label: "Andhra Pradesh", value: "Andhra Pradesh" },
     { label: "Arunachal Pradesh", value: "Arunachal Pradesh" },
     { label: "Assam", value: "Assam" },
@@ -187,7 +188,6 @@ function get_india_state() {
     { label: "Rajasthan", value: "Rajasthan" },
     { label: "Sikkim", value: "Sikkim" },
     { label: "Tamil Nadu", value: "Tamil Nadu" },
-    { label: "Telangana", value: "Telangana" },
     { label: "Tripura", value: "Tripura" },
     { label: "Uttar Pradesh", value: "Uttar Pradesh" },
     { label: "Uttarakhand", value: "Uttarakhand" },

@@ -2,7 +2,7 @@ import WorkProcess from "../../components/custom/WorkProcess/WorkProcess";
 import { useOrderConfirmationsPageHook } from "../../utils/hooks";
 
 export default function ConfirmationOrderPage() {
-  const { order_id } = useOrderConfirmationsPageHook();
+  const { order_id, secondsLeft } = useOrderConfirmationsPageHook();
   return (
     <>
       <div className="bg-[#EBF8FD] py-20">
@@ -19,7 +19,15 @@ export default function ConfirmationOrderPage() {
               We will notify you of all the details via email. <br /> Thank you!
             </h4>
             <h4 className="text-xl sm:text-2xl mt-4 font-medium text-gray-700">
-              You will be redirected to Order Page in <br /> 10 Seconds
+              You will be redirected to Order Page in <br />{" "}
+              <span
+                style={{
+                  color: "red",
+                }}
+              >
+                {secondsLeft}
+              </span>{" "}
+              Seconds
             </h4>
           </div>
         </div>
