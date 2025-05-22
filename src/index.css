@@ -68,12 +68,12 @@ body {
 }
 
 @layer base {
-  * {
+  /* * {
     @apply border-border;
-  }
+  } */
 
   body {
-    @apply bg-background text-foreground;
+    /* @apply  text-foreground; */
   }
 }
 
@@ -109,7 +109,7 @@ ul.slick-dots {
 }
 
 .slick-active .customDots {
-  @apply bg-brand
+  /* @apply bg-brand */
 }
 
 .productDetailsTabCard .ant-tabs-nav::before {
@@ -138,7 +138,7 @@ ul.slick-dots {
 }
 
 .ant-select-selection-placeholder {
-  @apply !text-muted-foreground
+  /* @apply !text-muted-foreground */
 }
 
 .selectRadioBoxCustom .ant-radio-wrapper {
