@@ -91,6 +91,7 @@ function useCartsHook() {
                 session_id: localStorage.getItem("session_id"),
               })
             ).unwrap();
+            dispatch(retrieveCartDetails(localStorage.getItem("session_id")));
 
             form.resetFields();
             toast.success("Payment created successfully");
