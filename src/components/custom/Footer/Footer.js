@@ -155,7 +155,7 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="py-1  items-center justify-center">
+      <div className="py-1 items-center justify-center !pb-[50px] sm:pb-0">
         <h3 className="text-center text-blue-400 text-sm">
           Copyright © {new Date().getFullYear()} Joyful Surprises. All Rights
           Reserved.

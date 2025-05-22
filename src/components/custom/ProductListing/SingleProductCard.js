@@ -18,12 +18,7 @@ function SingleProductCard({ product }) {
     <NavLink to={`/products/details/${id}`}>
       <div className="bg-white h-full rounded-md overflow-hidden shadow-sm">
         <div className="relative">
-          <Image
-            src={IMAGE_BASE_URL + thumbnail}
-            width={400}
-            height={400}
-            className="ant_imgs"
-          />
+          <Image src={IMAGE_BASE_URL + thumbnail} className="ant_imgs w-full" />
           {product_trading_type?.length != 0 && (
             <div className="w-max bg-red-500 text-white font-semibold text-sm px-3 py-2 rounded-lg absolute top-2 left-2">
               {product_trading_type}

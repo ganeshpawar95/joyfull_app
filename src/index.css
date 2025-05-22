@@ -111,7 +111,10 @@ ul.slick-dots {
 .slick-active .customDots {
   /* @apply bg-brand */
 }
-
+.productDetailsTabCard .ant-tabs-nav .ant-tabs-nav-wrap {
+  display: flex;
+  justify-content: center;
+}
 .productDetailsTabCard .ant-tabs-nav::before {
   display: none;
 }
@@ -187,4 +190,29 @@ ul.slick-dots {
 
 .ant_imgs{
   height: "400px !important"
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+::-moz-scrollbar {
+  display: none;
+}
+::-o-scrollbar {
+  display: none;
+}
+::-ms-scrollbar {
+  display: none;
+}
+.ant-image{
+  width: 100% !important;
+}
+
+
+@media screen and (max-width: 767px) {
+  .ant-tabs-nav-list{
+    flex-wrap: wrap !important;
+    row-gap: 10px;
+    background-color: transparent !important;
+  }
 }

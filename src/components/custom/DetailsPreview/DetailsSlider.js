@@ -84,18 +84,19 @@ function DetailsSlider(props) {
         charSet="UTF-8"
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
       />
-      <Row className="items-center">
+      <Row>
         <Col xl={3}>
           <Slider
             className="leftSider !hidden sm:!block"
             asNavFor={nav1}
             ref={sliderRef2}
-            slidesToShow={isMobile ? 3 : 4}
+            slidesToShow={isMobile ? 3 : 3}
             swipeToSlide={true}
             focusOnSelect={true}
             vertical={!isMobile}
             arrows={false}
             centerMode={true}
+            infinite={true}
             centerPadding={isMobile ? "20px" : "100px"}
           >
             {product_images
@@ -103,7 +104,7 @@ function DetailsSlider(props) {
               .map((item, index) => (
                 <div key={index}>
                   <img
-                    className="sm:w-[150px] sm:h-[150px] rounded-md"
+                    className="sm:h-[150px] w-full rounded-md"
                     src={IMAGE_BASE_URL + item.images}
                     alt={`Product ${index + 1}`}
                     width={150}

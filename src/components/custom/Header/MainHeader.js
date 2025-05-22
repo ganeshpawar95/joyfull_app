@@ -56,7 +56,7 @@ function MainHeader() {
         <div className="flex justify-between items-center gap-x-4">
           <div className="logoBox basis-1/4">
             <NavLink to="/">
-              <img src={Logo} alt="Logo" height={70} width={100} />
+              <img className="w-full sm:w-[40%]" src={Logo} alt="Logo" />
             </NavLink>
           </div>
           <div className="searchBox basis-1/2 text-center">

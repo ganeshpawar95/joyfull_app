@@ -114,15 +114,15 @@ export default function ProductDetailsPage(props) {
                 <div className="max-h-[670px] overflow-y-auto">
                   <RightForm product_details={product_details} />
                 </div>
-                <div className="mt-5 fixed bottom-0 left-0 w-full z-40 px-2 pb-2 sm:px-0 sm:relative sm:left-0 ">
-                  <div className="grid grid-cols-2 gap-2 sm:gap-4">
+                <div className="mt-5 bg-white fixed bottom-0 left-0 w-full z-40 px-0 pb-0 sm:px-0 sm:relative sm:left-0 ">
+                  <div className="grid grid-cols-2 gap-0 sm:gap-4">
                     <div>
                       <Button
                         onClick={() => {
                           setisCart("cart");
                         }}
                         type="submit"
-                        className="w-full sm:rounded-md"
+                        className="w-full rounded-none sm:rounded-md bg-[#41C2EC] text-white"
                       >
                         <ShoppingCart />
                         Add to Cart
@@ -135,7 +135,7 @@ export default function ProductDetailsPage(props) {
                         }}
                         type="submit"
                         variant="orange"
-                        className="w-full sm:rounded-md"
+                        className="w-full rounded-none sm:rounded-md"
                       >
                         <ShoppingBag className="h-5 w-5" />
                         Buy Now

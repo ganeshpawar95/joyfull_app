@@ -3,7 +3,7 @@ function TopHeader() {
     <div className="py-2 bg-gray-100 overflow-hidden">
       {/* Marquee for mobile screens */}
       <div className="block sm:hidden">
-        <div className="animate-marquee">
+        <marquee>
           <span className="inline-block w-auto text-blue-400 mr-8">
             100% Satisfaction Guarantee
           </span>
@@ -14,7 +14,7 @@ function TopHeader() {
             Dispatch on Same Day
           </span>
           {/* </marquee> */}
-        </div>
+        </marquee>
       </div>
 
       {/* Fixed version for larger screens */}
