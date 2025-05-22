@@ -1,4 +1,3 @@
-// "use client";
 import WorkProcess from "../../components/custom/WorkProcess/WorkProcess";
 import { Button } from "../../components/ui/button";
 import { Spin, Steps } from "antd";
@@ -20,12 +19,13 @@ import QrcodeImage from "../../assets/images/qrcode.png";
 import { useOrderDetailsHook } from "../../utils/hooks";
 import { IMAGE_BASE_URL } from "../../utils/constants";
 
-export default async function OrderTrackingPage() {
-  const { order_details, loading, router_nav } = useOrderDetailsHook();
+export default function OrderTrackingPage() {
+  const { order_details, loading, router_nav, update_loader_state } =
+    useOrderDetailsHook();
   return (
     <Spin spinning={loading}>
       {order_details != null && (
-        <div className="py-10">
+        <div className="bg-[#EBF8FD] py-10">
           <div className="container mx-auto">
             <div className="flex justify-between items-center flex-wrap gap-y-3">
               <h4 className="text-2xl font-semibold text-gray-700">
@@ -33,9 +33,38 @@ export default async function OrderTrackingPage() {
                 <span className="text-red-500">#{order_details?.txn_id}</span>
               </h4>
               <div className="flex gap-3 flex-wrap">
-                <Button variant="outline" size="sm">
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={async () => {
+                    try {
+                      update_loader_state(true);
+                      const response = await fetch(order_details?.invoice_url, {
+                        method: "GET",
+                      });
+
+                      if (!response.ok) {
+                        throw new Error("Failed to fetch file");
+                      }
+
+                      const blob = await response.blob();
+                      const url = window.URL.createObjectURL(blob);
+                      const link = document.createElement("a");
+                      link.href = url;
+                      link.setAttribute("download", "invoice.pdf"); // You can name it as needed
+                      document.body.appendChild(link);
+                      link.click();
+                      link.remove();
+                      window.URL.revokeObjectURL(url);
+                      update_loader_state(false);
+                    } catch (err) {
+                      console.error("Download failed:", err);
+                      update_loader_state(false);
+                    }
+                  }}
+                >
                   <DownloadIcon />
-                  Add Invoice
+                  Download Invoice
                 </Button>
                 <Button onClick={() => router_nav("/")} size="sm">
                   Continue Shopping
@@ -219,7 +248,13 @@ export default async function OrderTrackingPage() {
                     Billing Information
                   </h4>
                   <h4 className="text-center py-2 text-gray-900 font-medium">
-                    Same as Shipping address
+                    {order_details?.shipping_address.user_address}
+                    {", "}
+                    {order_details?.shipping_address.city}
+                    {", "}
+                    {order_details?.shipping_address.pincode}
+                    {", "}
+                    {order_details?.shipping_address.state}
                   </h4>
                 </Col>
               </Row>

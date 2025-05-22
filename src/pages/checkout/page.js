@@ -65,6 +65,20 @@ export default function CheckoutPage() {
                         <Input placeholder="Mobile number" className="px-3" />
                       </Form.Item>
                     </div>
+                    <div>
+                      <Form.Item
+                        name={"email"}
+                        label={""}
+                        rules={[
+                          {
+                            required: true,
+                            message: `Please enter your email`,
+                          },
+                        ]}
+                      >
+                        <Input placeholder="Email" className="px-3" />
+                      </Form.Item>
+                    </div>
                   </div>
                 </div>
                 <div className="mt-4">
