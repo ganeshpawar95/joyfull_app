@@ -14,7 +14,7 @@ import {
   TableRow,
 } from "../../components/ui/table";
 import { DownloadIcon, Truck } from "lucide-react";
-import QrcodeImage from "../../assets/images/qrcode.png";
+import QrcodeImage from "../../assets/images/GoogleReviews.png";
 
 import { useOrderDetailsHook } from "../../utils/hooks";
 import { IMAGE_BASE_URL } from "../../utils/constants";
@@ -271,8 +271,11 @@ export default function OrderTrackingPage() {
       <div className="bg-[#3DC2EE]">
         <div className="container mx-auto">
           <h4 className="text-center font-medium text-xl py-3 text-white">
-            Send us the Opening video to our whatsapp (+91 9966558383) and get
-            INR 100/- Cash back Instantly
+            Send us the Opening video to our whatsapp{" "}
+            <a href="https://api.whatsapp.com/send?phone=+919966558383&text=Hi%20Joyfulsurprises">
+              (+91 9966558383)
+            </a>{" "}
+            and get INR 100/- Cash back Instantly on order above INR ₹1000/-
           </h4>
         </div>
       </div>

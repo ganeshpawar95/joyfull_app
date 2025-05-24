@@ -10,6 +10,12 @@ import {
   ConfirmationOrderPage,
   OrderTrackingPage,
   CategoryPage,
+  PrivacyPolicy,
+  TermsServices,
+  RefundPolicy,
+  ShippingPolicy,
+  ContactUS,
+  FindYourStart,
 } from "./pages";
 function App() {
   return (
@@ -36,6 +42,23 @@ function App() {
           />
 
           <GlobalEx.Route path="/category/:slug" element={<CategoryPage />} />
+
+          {/* #footer  */}
+          <GlobalEx.Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <GlobalEx.Route
+            path="/terms-of-service"
+            element={<TermsServices />}
+          />
+          <GlobalEx.Route path="/refund-policy" element={<RefundPolicy />} />
+          <GlobalEx.Route
+            path="/shipping-policy"
+            element={<ShippingPolicy />}
+          />
+
+          <GlobalEx.Route path="/contact-us" element={<ContactUS />} />
+          <GlobalEx.Route path="/find-your-star" element={<FindYourStart />} />
+
+          {/* FindYourStart */}
 
           <GlobalEx.Route path="*" element={<NotFoundComponent />} />
         </GlobalEx.Route>

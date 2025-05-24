@@ -1,27 +1,30 @@
 import { Star } from "lucide-react";
 import { IMAGE_BASE_URL } from "../../../utils/constants";
-function StarRating(rating) {
+function StarRating(props) {
+  const { rating } = props;
   const maxStars = 5;
-
   return (
     <div className="flex gap-1">
-      {[...Array(maxStars)].map((_, index) => (
-        <Star
-          key={index}
-          size={20}
-          className={
-            index < rating
-              ? "fill-green-600 stroke-none"
-              : "fill-gray-300 stroke-none"
-          }
-        />
-      ))}
+      {[...Array(maxStars)].map((_, index) => {
+        return (
+          <Star
+            key={index}
+            size={20}
+            className={
+              index < rating
+                ? "fill-green-600 stroke-none"
+                : "fill-gray-300 stroke-none"
+            }
+          />
+        );
+      })}
     </div>
   );
 }
 
 function SingleReviews(props) {
   const { item } = props;
+
   return (
     <div className="shadow-sm p-3 md:p-4 rounded-md bg-white">
       <StarRating rating={item?.rating} />

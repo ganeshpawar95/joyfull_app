@@ -60,6 +60,10 @@ export default function CheckoutPage() {
                             required: true,
                             message: `Please enter mobile number`,
                           },
+                          {
+                            max: 10,
+                            message: `Please enter a valid 10-digit mobile number`,
+                          },
                         ]}
                       >
                         <Input placeholder="Mobile number" className="px-3" />
@@ -235,6 +239,10 @@ export default function CheckoutPage() {
                             required: true,
                             message: `Please enter pin code`,
                           },
+                          {
+                            max: 6,
+                            message: `Please enter a valid 6-digit PIN code`,
+                          },
                         ]}
                       >
                         <Input placeholder="Pin Code" className="px-3" />
@@ -249,6 +257,10 @@ export default function CheckoutPage() {
                         {
                           required: true,
                           message: `Please enter phone number`,
+                        },
+                        {
+                          max: 10,
+                          message: `Please enter a valid 10-digit phone number`,
                         },
                       ]}
                     >

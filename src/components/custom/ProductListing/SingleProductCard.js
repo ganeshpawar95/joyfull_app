@@ -36,9 +36,9 @@ function SingleProductCard({ product, className }) {
               {product_name}
             </h4>
             <h5 className="text-base font-medium">
-              ₹ {offer_price}{" "}
+              ₹ {price}{" "}
               <span className="text-red-500 line-through ml-1 text-sm">
-                ₹ {price}
+                ₹ {offer_price}
               </span>
             </h5>
           </div>

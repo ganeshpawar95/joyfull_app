@@ -9,6 +9,7 @@ import Rupay from "../../../assets/images/payments/6.png";
 import APay from "../../../assets/images/payments/7.png";
 import Paypal from "../../../assets/images/payments/8.png";
 import Mestro from "../../../assets/images/payments/9.png";
+import { NavLink } from "react-router-dom";
 
 function Footer() {
   return (
@@ -17,54 +18,54 @@ function Footer() {
         <div className="sm:basis-1/3">
           <h3 className="text-white text-2xl">About Us</h3>
           <p className="text-sm font-medium mt-1 text-white/80">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui vero
-            nisi suscipit hic incidunt repellendus quis aliquam illum explicabo
-            minima dolorem quia in ex dignissimos, sunt vitae consequatur error
-            optio.
+            Joyfulsurprises is a unit of M B Traders which designs and sells
+            Personalised Gifts and star on premium quality. We are the official
+            partners star-registry.com. Secure online payment via Razorpay. 24*7
+            customer support.{" "}
           </p>
         </div>
         <div className="w-1/2 sm:w-auto">
           <h4 className="text-white/90 font-medium text-lg">Information</h4>
           <ul className="mt-2">
             <li>
-              <a
+              <NavLink
                 className="!text-white/70 font-medium text-sm text-center inline"
-                href="#"
+                to="/privacy-policy"
               >
                 Privacy Policy
-              </a>
+              </NavLink>
             </li>
             <li className="mt-1">
-              <a
+              <NavLink
                 className="!text-white/70 font-medium text-sm text-center inline"
-                href="#"
+                to="/terms-of-service"
               >
                 Terms of Service
-              </a>
+              </NavLink>
             </li>
             <li className="mt-1">
-              <a
+              <NavLink
                 className="!text-white/70 font-medium text-sm text-center inline"
-                href="#"
+                to={"/refund-policy"}
               >
                 Refund Policy
-              </a>
+              </NavLink>
             </li>
             <li className="mt-1">
-              <a
+              <NavLink
                 className="!text-white/70 font-medium text-sm text-center inline"
-                href="#"
+                to={"/shipping-policy"}
               >
                 Shipping Policy
-              </a>
+              </NavLink>
             </li>
             <li className="mt-1">
-              <a
+              <NavLink
                 className="!text-white/70 font-medium text-sm text-center inline"
-                href="#"
+                to={"/contact-us"}
               >
                 Contact Us
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
@@ -74,26 +75,18 @@ function Footer() {
             <li>
               <a
                 className="!text-white/70 font-medium text-sm text-center inline"
-                href="#"
+                href="/"
               >
                 Home
               </a>
             </li>
             <li className="mt-1">
-              <a
+              <NavLink
                 className="!text-white/70 font-medium text-sm text-center inline"
-                href="#"
-              >
-                Products
-              </a>
-            </li>
-            <li className="mt-1">
-              <a
-                className="!text-white/70 font-medium text-sm text-center inline"
-                href="#"
+                to={"/find-your-star"}
               >
                 Find Your Star
-              </a>
+              </NavLink>
             </li>
           </ul>
         </div>
