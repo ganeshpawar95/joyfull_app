@@ -24,6 +24,7 @@
     "class-variance-authority": "^0.7.1",
     "dompurify": "^3.2.5",
     "embla-carousel-react": "^8.6.0",
+    "gsap": "^3.13.0",
     "lucide-react": "^0.511.0",
     "postcss-cli": "^11.0.1",
     "react": "^19.1.0",

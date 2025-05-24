@@ -56,6 +56,7 @@ function DetailsSlider(props) {
     dots: isMobile ? true : false,
     arrows: isMobile ? true : false,
     asNavFor: nav2,
+    infinite: false,
     prevArrow: (
       <SampleNextArrow
         className={undefined}
@@ -87,16 +88,16 @@ function DetailsSlider(props) {
       <Row>
         <Col xl={3}>
           <Slider
-            className="leftSider !hidden sm:!block"
+            className="leftSider !hidden sm:!block max-h-[700px]"
             asNavFor={nav1}
             ref={sliderRef2}
-            slidesToShow={isMobile ? 3 : 3}
+            slidesToShow={isMobile ? 3 : 4}
             swipeToSlide={true}
             focusOnSelect={true}
             vertical={!isMobile}
             arrows={false}
-            centerMode={true}
-            infinite={true}
+            centerMode={false}
+            infinite={false}
             centerPadding={isMobile ? "20px" : "100px"}
           >
             {product_images
@@ -119,7 +120,7 @@ function DetailsSlider(props) {
             {product_images.map((item, index) => (
               <div key={index}>
                 <img
-                  className="h-full w-full rounded-md"
+                  className="h-full max-h-[600px] w-full rounded-md"
                   src={IMAGE_BASE_URL + item.images}
                   alt={`Product ${index + 1}`}
                   width={800}
