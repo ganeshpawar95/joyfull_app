@@ -14,8 +14,8 @@ function CustomerReviews({ results = [] }) {
       </div>
       {/* Grid Layout */}
       <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 md:gap-5 mt-3 md:mt-5">
-        {displayedProducts.map((res) => (
-          <SingleReviews item={res} />
+        {displayedProducts.map((res, index) => (
+          <SingleReviews key={res.id} item={res} index={index} />
         ))}
       </div>
       {/* Show More / Show Less Button */}

@@ -1,5 +1,10 @@
 import { Star } from "lucide-react";
 import { IMAGE_BASE_URL } from "../../../utils/constants";
+import { useEffect, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+gsap.registerPlugin(ScrollTrigger);
+
 function StarRating(props) {
   const { rating } = props;
   const maxStars = 5;
@@ -23,10 +28,35 @@ function StarRating(props) {
 }
 
 function SingleReviews(props) {
-  const { item } = props;
+  const { item, index } = props;
+  const reviewRef = useRef(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        reviewRef.current,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.6,
+          delay: index * 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: reviewRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+    }, reviewRef);
+
+    return () => ctx.revert();
+  }, [index]);
 
   return (
-    <div className="shadow-sm p-3 md:p-4 rounded-md bg-white">
+    <div ref={reviewRef} className="shadow-sm p-3 md:p-4 rounded-md bg-white">
       <StarRating rating={item?.rating} />
       <h4 className="text-gray-600 font-medium mt-2">{item?.title}</h4>
       <p className="text-sm text-gray-500 mt-1">{item?.review}</p>
