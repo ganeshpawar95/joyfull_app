@@ -36,7 +36,7 @@ function Footer() {
             trigger: title,
             // start: "top 100%",
             // end: "bottom 140%",
-            markers: true,
+            markers: false,
             toggleActions: "play none none none",
           },
         }

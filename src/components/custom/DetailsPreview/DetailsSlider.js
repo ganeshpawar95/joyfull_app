@@ -86,7 +86,7 @@ function DetailsSlider(props) {
         href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
       />
       <Row>
-        <Col xl={3}>
+        <Col xl={3} className="overflow-hidden">
           <Slider
             className="leftSider !hidden sm:!block max-h-[700px]"
             asNavFor={nav1}
@@ -105,11 +105,11 @@ function DetailsSlider(props) {
               .map((item, index) => (
                 <div key={index}>
                   <img
-                    className="sm:h-[150px] w-full rounded-md"
+                    className="sm:h-[100px] rounded-md"
                     src={IMAGE_BASE_URL + item.images}
                     alt={`Product ${index + 1}`}
                     width={150}
-                    height={150}
+                    // height={150}
                   />
                 </div>
               ))}
@@ -123,8 +123,8 @@ function DetailsSlider(props) {
                   className="h-full max-h-[600px] w-full rounded-md"
                   src={IMAGE_BASE_URL + item.images}
                   alt={`Product ${index + 1}`}
-                  width={800}
-                  height={600}
+                  // width={800}
+                  // height={600}
                 />
               </div>
             ))}
