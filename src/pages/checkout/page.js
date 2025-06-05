@@ -64,9 +64,18 @@ export default function CheckoutPage() {
                             max: 10,
                             message: `Please enter a valid 10-digit mobile number`,
                           },
+                          {
+                            pattern: /^[0-9]{10}$/,
+                            message:
+                              "Please enter a valid 10-digit phone number",
+                          },
                         ]}
                       >
-                        <Input placeholder="Mobile number" className="px-3" />
+                        <Input
+                          type="number"
+                          placeholder="Mobile number"
+                          className="px-3"
+                        />
                       </Form.Item>
                     </div>
                     <div>
@@ -243,9 +252,17 @@ export default function CheckoutPage() {
                             max: 6,
                             message: `Please enter a valid 6-digit PIN code`,
                           },
+                          {
+                            pattern: /^[0-9]{6}$/,
+                            message: "Please enter a valid 6-digit pin code",
+                          },
                         ]}
                       >
-                        <Input placeholder="Pin Code" className="px-3" />
+                        <Input
+                          type="number"
+                          placeholder="Pin Code"
+                          className="px-3"
+                        />
                       </Form.Item>
                     </div>
                   </div>
@@ -262,9 +279,14 @@ export default function CheckoutPage() {
                           max: 10,
                           message: `Please enter a valid 10-digit phone number`,
                         },
+                        {
+                          pattern: /^[0-9]{10}$/,
+                          message: "Please enter a valid 10-digit phone number",
+                        },
                       ]}
                     >
                       <Input
+                        type="number"
                         placeholder="Phone Number"
                         className="px-3 w-full"
                       />

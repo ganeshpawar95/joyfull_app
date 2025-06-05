@@ -1,11 +1,16 @@
 import WorkProcess from "../../components/custom/WorkProcess/WorkProcess";
 import { useOrderConfirmationsPageHook } from "../../utils/hooks";
+import confirmationBanner from "../../assets/images/confirmationBannerr.jpg";
+import Timer from "../../components/custom/Timer";
 
 export default function ConfirmationOrderPage() {
   const { order_id, secondsLeft } = useOrderConfirmationsPageHook();
   return (
     <>
-      <div className="bg-[#EBF8FD] py-20">
+      <div
+        className="py-20 bg-cover bg-no-repeat bg-center"
+        style={{ backgroundImage: `url(${confirmationBanner})` }}
+      >
         <div className="container mx-auto">
           <div className="text-center">
             <h1 className="border-b-2 border-gray-500 md:w-max mx-auto text-2xl md:text-4xl font-bold pb-3 text-gray-700">
@@ -25,7 +30,7 @@ export default function ConfirmationOrderPage() {
                   color: "red",
                 }}
               >
-                {secondsLeft}
+                <Timer initialSeconds={secondsLeft} />
               </span>{" "}
               Seconds
             </h4>
