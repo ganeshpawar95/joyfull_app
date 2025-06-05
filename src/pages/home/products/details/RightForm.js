@@ -118,7 +118,12 @@ function RightForm(props) {
                 { required: true, message: "Please select a frame color!" },
               ]}
             >
-              <Radio.Group size="large" className="mt-2" buttonStyle="solid">
+              <Radio.Group
+                size="large"
+                className="mt-2 buttonStyleRadio"
+                buttonStyle="solid"
+                optionType="button"
+              >
                 {product_details?.frame_colors.map((master) => (
                   <Radio.Button key={master.name} value={master.name}>
                     {capitalizeFirstLetter(master.name)}
@@ -138,7 +143,11 @@ function RightForm(props) {
                 { required: true, message: "Please select a frame size!" },
               ]}
             >
-              <Radio.Group size="large" className="mt-2" buttonStyle="solid">
+              <Radio.Group
+                size="large"
+                className="mt-2 buttonStyleRadio"
+                buttonStyle="solid"
+              >
                 {product_details?.frame_size.map((master) => (
                   <Radio.Button value={master.name}>
                     {capitalizeFirstLetter(master.name)}
@@ -161,7 +170,7 @@ function RightForm(props) {
               <Radio.Group
                 defaultValue="c"
                 size="large"
-                className="mt-2"
+                className="mt-2 buttonStyleRadio"
                 buttonStyle="solid"
               >
                 {product_details?.frame_thickness.map((master) => (

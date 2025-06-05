@@ -104,7 +104,7 @@ function DYSinglePhotoField({ label_name, name }) {
         getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
         rules={[{ required: true, message: `Please upload ${label_name}` }]}
       >
-        <Upload maxCount={1} beforeUpload={() => false}>
+        <Upload maxCount={1} beforeUpload={() => false} listType="picture-card">
           <button type="button">
             <UploadOutlined /> Upload
           </button>
@@ -126,7 +126,12 @@ function DYMultiplePhotoField({ label_name, name }) {
         valuePropName="fileList"
         getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
       >
-        <Upload multiple maxCount={8} beforeUpload={() => false}>
+        <Upload
+          multiple
+          maxCount={8}
+          beforeUpload={() => false}
+          listType="picture-card"
+        >
           <button type="button">
             <UploadOutlined /> Upload
           </button>

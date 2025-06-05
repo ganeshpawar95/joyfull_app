@@ -217,3 +217,27 @@ ul.slick-dots {
   }
 }
 
+
+.slider-vertical .slick-track .slick-slide{
+  cursor: pointer;
+}
+.slider-vertical .slick-track .slick-slide img{
+  transition: 0.4s;
+  border: 2px solid transparent;
+  border-radius: 4px;
+}
+.slider-vertical .slick-track .slick-slide.slick-current img{
+  border-color: #22B7EB !important;
+}
+.slider-vertical .slick-list .slick-track{
+  height: 100% !important;
+}
+
+.buttonStyleRadio{
+  display: flex;
+  column-gap: 10px;
+}
+
+.ant-radio-button-wrapper{
+  border-radius: 0px !important;
+}

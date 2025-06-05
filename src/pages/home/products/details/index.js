@@ -101,68 +101,134 @@ export default function ProductDetailsPage(props) {
           </div>
         </div>
       </div>
+
       {product_details != null && (
-        <Form form={form} onFinish={handleSubmit}>
-          <div className="px-3 sm:px-10 mt-10 pb-10">
-            <Row>
-              <Col xl={6}>
-                <DetailsSlider
-                  product_images={product_details?.product_images}
-                />
-              </Col>
-              <Col xl={6}>
-                <div className="max-h-[670px] overflow-y-auto">
-                  <RightForm product_details={product_details} />
+        <>
+          <Form form={form} onFinish={handleSubmit}>
+            <div className="container py-4">
+              <div className="row">
+                <div className="col-xl-6">
+                  <DetailsSlider
+                    product_images={product_details?.product_images}
+                  />
                 </div>
-                <div className="mt-5 bg-white fixed bottom-0 left-0 w-full z-40 px-0 pb-0 sm:px-0 sm:relative sm:left-0 ">
-                  <div className="grid grid-cols-2 gap-0 sm:gap-4">
-                    <div>
-                      <Button
-                        onClick={() => {
-                          setisCart("cart");
-                        }}
-                        type="submit"
-                        className="w-full rounded-none sm:rounded-md bg-[#41C2EC] text-white"
-                      >
-                        <ShoppingCart />
-                        Add to Cart
-                      </Button>
-                    </div>
-                    <div>
-                      <Button
-                        onClick={() => {
-                          setisCart("buy");
-                        }}
-                        type="submit"
-                        variant="orange"
-                        className="w-full rounded-none sm:rounded-md"
-                      >
-                        <ShoppingBag className="h-5 w-5" />
-                        Buy Now
-                      </Button>
+                <div className="col-xl-6">
+                  <div className="max-h-[670px] overflow-y-auto">
+                    <RightForm product_details={product_details} />
+                  </div>
+                  <div className="mt-5 bg-white fixed bottom-0 left-0 w-full z-40 px-0 pb-0 sm:px-0 sm:relative sm:left-0 ">
+                    <div className="grid grid-cols-2 gap-0 sm:gap-4">
+                      <div>
+                        <Button
+                          onClick={() => {
+                            setisCart("cart");
+                          }}
+                          type="submit"
+                          className="w-full rounded-none sm:rounded-md bg-[#41C2EC] text-white"
+                        >
+                          <ShoppingCart />
+                          Add to Cart
+                        </Button>
+                      </div>
+                      <div>
+                        <Button
+                          onClick={() => {
+                            setisCart("buy");
+                          }}
+                          type="submit"
+                          variant="orange"
+                          className="w-full rounded-none sm:rounded-md"
+                        >
+                          <ShoppingBag className="h-5 w-5" />
+                          Buy Now
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </Col>
-            </Row>
-            <div className="mt-4">
-              <Tabs
-                className="productDetailsTabCard"
-                defaultActiveKey="1"
-                type="card"
-                items={items}
-              />
+              </div>
             </div>
-          </div>
+            <div className="px-3 sm:px-10 mt-10 pb-10">
+              <div className="mt-4">
+                <Tabs
+                  className="productDetailsTabCard"
+                  defaultActiveKey="1"
+                  type="card"
+                  items={items}
+                />
+              </div>
+              <div className="py-4 px-4 sm:px-10">
+                <ProductListing title="" />
+              </div>
 
-          <div className="py-4 px-4 sm:px-10">
-            <ProductListing title="" />
-          </div>
+              <div className="px-4 sm:px-10 mt-10 pb-10">
+                <WorkProcess />
+              </div>
+            </div>
+          </Form>
 
-          <div className="px-4 sm:px-10 mt-10 pb-10">
-            <WorkProcess />
-          </div>
-        </Form>
+          {/* <Form form={form} onFinish={handleSubmit}>
+            <div className="px-3 sm:px-10 mt-10 pb-10">
+              <Row>
+                <Col xl={6}>
+                  <DetailsSlider
+                    product_images={product_details?.product_images}
+                  />
+                </Col>
+                <Col xl={6}>
+                  <div className="max-h-[670px] overflow-y-auto">
+                    <RightForm product_details={product_details} />
+                  </div>
+                  <div className="mt-5 bg-white fixed bottom-0 left-0 w-full z-40 px-0 pb-0 sm:px-0 sm:relative sm:left-0 ">
+                    <div className="grid grid-cols-2 gap-0 sm:gap-4">
+                      <div>
+                        <Button
+                          onClick={() => {
+                            setisCart("cart");
+                          }}
+                          type="submit"
+                          className="w-full rounded-none sm:rounded-md bg-[#41C2EC] text-white"
+                        >
+                          <ShoppingCart />
+                          Add to Cart
+                        </Button>
+                      </div>
+                      <div>
+                        <Button
+                          onClick={() => {
+                            setisCart("buy");
+                          }}
+                          type="submit"
+                          variant="orange"
+                          className="w-full rounded-none sm:rounded-md"
+                        >
+                          <ShoppingBag className="h-5 w-5" />
+                          Buy Now
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              <div className="mt-4">
+                <Tabs
+                  className="productDetailsTabCard"
+                  defaultActiveKey="1"
+                  type="card"
+                  items={items}
+                />
+              </div>
+            </div>
+
+            <div className="py-4 px-4 sm:px-10">
+              <ProductListing title="" />
+            </div>
+
+            <div className="px-4 sm:px-10 mt-10 pb-10">
+              <WorkProcess />
+            </div>
+          </Form> */}
+        </>
       )}
     </Spin>
   );
