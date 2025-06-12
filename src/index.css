@@ -112,8 +112,8 @@ ul.slick-dots {
   /* @apply bg-brand */
 }
 .productDetailsTabCard .ant-tabs-nav .ant-tabs-nav-wrap {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 .productDetailsTabCard .ant-tabs-nav::before {
   display: none;
@@ -181,10 +181,7 @@ ul.slick-dots {
 
   .ant-tabs-card>.ant-tabs-nav .ant-tabs-tab,
   .ant-tabs-card>div>.ant-tabs-nav .ant-tabs-tab {
-    padding: 1px 10px;
-    padding-top: 10px !important;
-    padding-bottom: 10px !important;
-    font-size: 13px !important;
+    
   }
 }
 
@@ -211,10 +208,21 @@ ul.slick-dots {
 
 @media screen and (max-width: 767px) {
   .ant-tabs-nav-list{
-    flex-wrap: wrap !important;
-    row-gap: 10px;
-    background-color: transparent !important;
+    text-align: center !important;
+    
   }
+  .ant-tabs-tab{
+    border-right: 1px solid #2E3368 !important;
+  }
+  .ant-tabs-tab::last-child{
+    border-right: none !important;
+  }
+  .ant-tabs >.ant-tabs-nav .ant-tabs-nav-wrap, .ant-tabs >div>.ant-tabs-nav .ant-tabs-nav-wrap {
+    white-space: break-spaces !important;
+}
+.ant-tabs.ant-tabs-top.ant-tabs-mobile.ant-tabs-card.productDetailsTabCard.css-dev-only-do-not-override-1m2bkf9 {
+    border: 1px solid #BFDBFE;
+}
 }
 
 
@@ -241,3 +249,4 @@ ul.slick-dots {
 .ant-radio-button-wrapper{
   border-radius: 0px !important;
 }
+

@@ -85,7 +85,7 @@ function DYDateField({ label_name, name }) {
         label={""}
         rules={[{ required: true, message: `Please select ${label_name}` }]}
       >
-        <DatePicker style={{ width: "300px" }} />
+        <DatePicker style={{ width: "300px" }} format="DD/MM/YYYY" />
       </Form.Item>
     </div>
   );
@@ -125,6 +125,7 @@ function DYMultiplePhotoField({ label_name, name }) {
         label={""}
         valuePropName="fileList"
         getValueFromEvent={(e) => (Array.isArray(e) ? e : e?.fileList)}
+        className="mb-3"
       >
         <Upload
           multiple
@@ -137,6 +138,9 @@ function DYMultiplePhotoField({ label_name, name }) {
           </button>
         </Upload>
       </Form.Item>
+      <p className="text-red-400 text-sm">
+        Note: Each letter one photo required. Maximum 8 photos.
+      </p>
     </div>
   );
 }

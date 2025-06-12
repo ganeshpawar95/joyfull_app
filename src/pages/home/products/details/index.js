@@ -9,8 +9,12 @@ import { ShoppingBag, ShoppingCart } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
 
 import { Tabs, Form, Spin } from "antd";
-import { useProductDetailsHook } from "../../../../utils/hooks/index";
+import {
+  useHomePageHook,
+  useProductDetailsHook,
+} from "../../../../utils/hooks/index";
 import DOMPurify from "dompurify";
+import CustomerReviews from "../../../../components/custom/CustomerReviews/CustomerReviews";
 
 export default function ProductDetailsPage(props) {
   const {
@@ -23,6 +27,7 @@ export default function ProductDetailsPage(props) {
     setisCart,
     loading,
   } = useProductDetailsHook();
+  const { reviews_all } = useHomePageHook();
 
   const items = [
     {
@@ -113,7 +118,7 @@ export default function ProductDetailsPage(props) {
                   />
                 </div>
                 <div className="col-xl-6">
-                  <div className="max-h-[670px] overflow-y-auto">
+                  <div className="sm:max-h-[670px] overflow-y-auto">
                     <RightForm product_details={product_details} />
                   </div>
                   <div className="mt-5 bg-white fixed bottom-0 left-0 w-full z-40 px-0 pb-0 sm:px-0 sm:relative sm:left-0 ">
@@ -159,6 +164,9 @@ export default function ProductDetailsPage(props) {
               </div>
               <div className="py-4 px-4 sm:px-10">
                 <ProductListing title="" />
+                <div className="mt-4">
+                  <CustomerReviews results={reviews_all} />
+                </div>
               </div>
 
               <div className="px-4 sm:px-10 mt-10 pb-10">

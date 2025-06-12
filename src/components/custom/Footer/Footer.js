@@ -287,7 +287,7 @@ function Footer() {
       </div>
       <div className="py-1 items-center justify-center !pb-[50px] sm:!pb-[0px]">
         <h3 className="text-center text-blue-400 text-sm">
-          Copyright © {new Date().getFullYear()} Joyful Surprises. All Rights
+          Copyright © {new Date().getFullYear()} Joyfulsurprises. All Rights
           Reserved.
         </h3>
       </div>
